@@ -9,38 +9,37 @@
  * edit it directly.
  */
 
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/stp.h>
+#include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
-#include <dt-bindings/zmk/pointing.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
     behaviors {
-      #include "macros.dtsi"
+        #include "macros.dtsi"
       #include "version.dtsi"
 
-      hm: homerow_mods {
-          compatible = "zmk,behavior-hold-tap";
-          label = "HOMEROW_MODS";
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          quick_tap_ms = <175>;
-          flavor = "tap-preferred";
-          bindings = <&kp>, <&kp>;
-      };
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <175>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
 
-      hr2: hr2 {
-          compatible = "zmk,behavior-hold-tap";
-          label = "HR2";
-          #binding-cells = <2>;
-          tapping-term-ms = <200>;
-          quick_tap_ms = <175>;
-          flavor = "tap-preferred";
-          bindings = <&mo>, <&kp>;
-      };
+        hr2: hr2 {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HR2";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <175>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
     };
 
     macros {
@@ -59,26 +58,27 @@
         };
     };
 
-  keymap {
-    compatible = "zmk,keymap";
+    keymap {
+        compatible = "zmk,keymap";
 
-    default_layer {
-      display-name = "Base";
-      bindings = <
-        &kp EQUAL  &kp N1     &kp N2                    &kp N3    &kp N4     &kp N5  &tog 2                                                                                                   &mo 3               &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
-        &kp TAB    &kp Q      &kp W                     &kp E     &kp R      &kp T   &kp LG(K)                                                                                                &kp LC(UP_ARROW)    &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
-        &kp ESC    &hr2 1 A   &hr2 1 S                  &hr2 1 D  &hr2 1 F   &kp G   &launch    &kp LS(LG(LEFT_BRACKET))  &kp LS(LG(RIGHT_BRACKET))      &kp LA(LEFT_ARROW)    &kp LA(RIGHT)  &kp LC(DOWN_ARROW)  &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-        &kp LSHFT  &kp Z      &kp X                     &kp C     &kp V      &kp B                                        &kp LG(GRAVE)                  &kp LA(LEFT_COMMAND)                                     &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-        &tog 1     &kp GRAVE  &kp LC(LA(LEFT_COMMAND))  &kp LEFT  &kp RIGHT          &kp SPACE  &kp LEFT_COMMAND          &tog 1                         &kp LS(LEFT_COMMAND)  &kp ENTER      &kp BACKSPACE               &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 1
-      >;
-    };
-    layer_fn {
+        default_layer {
+            display-name = "Base";
             bindings = <
-&kp F1  &kp F2            &kp F3         &kp F4              &kp F5               &kp F6  &tog 2                                               &mo 3       &kp F7  &kp F8          &kp F9          &kp F10          &kp F11                &kp F12
-&trans  &trans            &trans         &trans              &trans               &trans  &none                                                &none       &trans  &trans          &trans          &trans           &trans                 &trans
-&trans  &kp LEFT_SHIFT    &kp LCTRL      &kp LEFT_ALT        &kp LEFT_COMMAND     &trans  &none   &trans  &trans      &trans    &trans         &none       &trans  &trans          &kp LG(K)       &trans           &kp LG(LS(SEMICOLON))  &trans
-&trans  &kp LG(Z)         &kp LG(LS(Z))  &trans              &kp LG(LS(V))        &trans                  &trans      &kp HOME                             &trans  &trans          &kp UP_ARROW    &trans           &trans                 &trans
-&trans  &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)          &trans  &trans  &trans      &kp END   &kp LG(ENTER)  &kp DELETE          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans                 &trans
+&kp EQUAL   &kp N1     &kp N2                    &kp N3    &kp N4     &kp N5  &tog 2                                                                                                   &mo 3               &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB     &kp Q      &kp W                     &kp E     &kp R      &kp T   &kp LG(K)                                                                                                &kp LC(UP_ARROW)    &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
+&hr2 1 ESC  &hr2 1 A   &hr2 1 S                  &hr2 1 D  &hr2 1 F   &kp G   &launch    &kp LS(LG(LEFT_BRACKET))  &kp LS(LG(RIGHT_BRACKET))      &kp LA(LEFT_ARROW)    &kp LA(RIGHT)  &kp LC(DOWN_ARROW)  &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT   &kp Z      &kp X                     &kp C     &kp V      &kp B                                        &kp LG(GRAVE)                  &kp LA(LEFT_COMMAND)                                     &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&tog 1      &kp GRAVE  &kp LC(LA(LEFT_COMMAND))  &kp LEFT  &kp RIGHT          &kp SPACE  &kp LEFT_COMMAND          &tog 1                         &kp LS(LEFT_COMMAND)  &kp ENTER      &kp BACKSPACE               &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 1
+            >;
+        };
+
+        layer_fn {
+            bindings = <
+&kp F1                    &kp F2            &kp F3         &kp F4              &kp F5               &kp F6  &tog 2                                               &mo 3       &kp F7  &kp F8          &kp F9          &kp F10          &kp F11                &kp F12
+&trans                    &trans            &trans         &trans              &trans               &trans  &none                                                &none       &trans  &trans          &trans          &trans           &trans                 &trans
+&kp LS(LC(LA(LEFT_GUI)))  &kp LEFT_SHIFT    &kp LCTRL      &kp LEFT_ALT        &kp LEFT_COMMAND     &trans  &none   &trans  &trans      &trans    &trans         &none       &trans  &trans          &kp LG(K)       &trans           &kp LG(LS(SEMICOLON))  &trans
+&trans                    &kp LG(Z)         &kp LG(LS(Z))  &trans              &kp LG(LS(V))        &trans                  &trans      &kp HOME                             &trans  &trans          &kp UP_ARROW    &trans           &trans                 &trans
+&trans                    &kp LEFT_CONTROL  &kp LEFT_ALT   &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)          &trans  &trans  &trans      &kp END   &kp LG(ENTER)  &kp DELETE          &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans                 &trans
             >;
         };
 
@@ -101,5 +101,5 @@
 &none  &none         &none         &none         &none                       &none        &none  &none      &none       &bl BL_TOG  &rgb_ug RGB_TOG                &bl BL_INC  &bl BL_DEC  &none  &none  &none
             >;
         };
-  };
+    };
 };
